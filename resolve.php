@@ -11,7 +11,7 @@ function get_http_response_code($url) {
 //Gets room code from POST and puts it into HTML special doohickies.
 $room = $_POST['room'];	
 $room = htmlspecialchars($room);
-
+print "<title>Quiplash Resolver.</title>";
 
 //Checks if entered code is valid.
 if (strlen($room)<4) {
@@ -42,7 +42,7 @@ if(get_http_response_code('http://blobcast.jackboxgames.com/room/' . $room . '?u
 //Parses JSON API response.
 $obj = json_decode($json);
 $server = gethostbyname($obj->{'server'});;
-print "<title>Quiplash Resolver.</title>";
+
 print "Server hostname: " . $obj->{'server'}; 
 print "<br> Server IP: " . $server;
 print "<br> Current audience count: " . $obj->{'numAudience'}; 
